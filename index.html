@@ -32,14 +32,13 @@
 
   /* hero */
   .hero{text-align:center;padding:56px 0 30px;}
-  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--lilas);}
   h1{font-size:clamp(36px,7.5vw,68px);font-weight:800;letter-spacing:-.035em;line-height:1.01;
     margin:.3em auto .32em;max-width:15ch;text-wrap:balance;}
   h1 .g{color:var(--lilas);}
   .lede{font-size:clamp(16px,2.3vw,20px);color:var(--dim);max-width:50ch;margin:0 auto 28px;}
   .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
   .btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;
-    border-radius:999px;padding:15px 26px;font-size:15.5px;}
+    border-radius:999px;padding:15px 26px;font-size:16px;}
   .btn.lima{background:var(--lima);color:var(--tinta);}
   .btn.ghost{border:1px solid var(--line);color:var(--txt);}
   .soon{color:var(--faint);font-size:13px;margin-top:14px;}
@@ -64,9 +63,9 @@
   .feat .kicker{color:var(--lilas);}
   .feat h2{font-size:clamp(24px,3.6vw,36px);font-weight:800;letter-spacing:-.028em;line-height:1.06;
     margin:.4em 0 .46em;max-width:15ch;text-wrap:balance;}
-  .feat .lead2{color:var(--dim);font-size:clamp(15.5px,1.9vw,18px);max-width:42ch;margin:0;line-height:1.5;}
+  .feat .lead2{color:var(--dim);font-size:clamp(15px,1.9vw,18px);max-width:42ch;margin:0;line-height:1.5;}
   .pts{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:13px;}
-  .pts li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--txt);}
+  .pts li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:var(--txt);}
   .pts svg{flex:none;margin-top:2px;}
 
   /* "e ainda" compact list — no icon tiles */
@@ -75,15 +74,15 @@
   .more-item{display:flex;gap:12px;align-items:flex-start;}
   .more-item svg{flex:none;margin-top:2px;}
   .more-item h3{margin:0 0 3px;font-size:16px;font-weight:800;letter-spacing:-.01em;}
-  .more-item p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.45;}
+  .more-item p{margin:0;color:var(--dim);font-size:14px;line-height:1.45;}
 
   /* differentiator band */
-  .band{background:var(--tinta);border:1px solid var(--line);border-radius:28px;padding:clamp(28px,5vw,48px);
-    text-align:center;margin:8px 0;}
-  .band h2{margin:0 auto .5em;}
+  .band{background:var(--tinta);border:1px solid var(--line);border-radius:28px;
+    padding:clamp(36px,6vw,56px) clamp(28px,6vw,64px);text-align:center;margin:8px 0;}
+  .band h2{max-width:16ch;margin:0 auto .5em;}
   .band p{color:var(--dim);max-width:52ch;margin:0 auto;font-size:17px;}
-  .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px;}
-  .chip{font-size:13.5px;font-weight:700;border-radius:999px;padding:9px 15px;border:1px solid var(--line);color:var(--txt);}
+  .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+  .chip{font-size:14px;font-weight:700;border-radius:999px;padding:9px 15px;border:1px solid var(--line);color:var(--txt);}
   .chip.lima{background:var(--lima);color:var(--tinta);border-color:transparent;}
 
   /* footer */
@@ -107,6 +106,13 @@
 <header><div class="wrap bar">
   <svg class="mark" viewBox="80 110 352 352" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M418.6,319.4 Q418.6,353.4 394.6,377.4 L347.4,424.6 Q323.4,448.6 289.4,448.6 L222.6,448.6 Q188.6,448.6 164.6,424.6 L117.4,377.4 Q93.4,353.4 93.4,319.4 L93.4,252.6 Q93.4,218.6 117.4,194.6 L164.6,147.4 Q188.6,123.4 222.6,123.4 L289.4,123.4 Q323.4,123.4 347.4,147.4 L394.6,194.6 Q418.6,218.6 418.6,252.6 Z" fill="#CDB8FF" stroke="#6E2BEB" stroke-width="16"/>
+    <path d="M186 250 Q212 234 238 250" fill="none" stroke="#16123A" stroke-width="13" stroke-linecap="round"/>
+    <path d="M274 250 Q300 234 326 250" fill="none" stroke="#16123A" stroke-width="13" stroke-linecap="round"/>
+    <ellipse cx="212" cy="294" rx="18" ry="25" fill="#16123A"/>
+    <ellipse cx="300" cy="294" rx="18" ry="25" fill="#16123A"/>
+    <circle cx="205" cy="284" r="5.5" fill="#F3F1FB"/>
+    <circle cx="293" cy="284" r="5.5" fill="#F3F1FB"/>
+    <path d="M222 346 Q256 376 290 346" fill="none" stroke="#16123A" stroke-width="14" stroke-linecap="round"/>
   </svg>
   <span class="name">TVDE</span>
   <span class="pill">Em breve nas lojas</span>
@@ -114,9 +120,8 @@
 
 <main class="wrap">
   <section class="hero">
-    <span class="eyebrow">Certificado de Motorista TVDE · IMT</span>
     <h1>Prepara o exame e <span class="g">passa à primeira</span>.</h1>
-    <p class="lede">Perguntas reais do IMT, correção instantânea e um plano diário que te leva até à prontidão. Sem anúncios.</p>
+    <p class="lede">Certificado de Motorista TVDE: perguntas reais do IMT, correção instantânea e um plano diário que te leva até à prontidão. Sem anúncios.</p>
     <div class="cta">
       <a class="btn lima" href="#brevemente">Google Play</a>
     </div>
