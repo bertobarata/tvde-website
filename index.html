@@ -46,9 +46,7 @@
 
   /* mascot + phones */
   .mascot{width:120px;height:120px;margin:8px auto 0;display:block;}
-  .shots{display:flex;gap:22px;justify-content:center;align-items:flex-end;flex-wrap:wrap;padding:40px 0 8px;}
   .phone{width:224px;max-width:62vw;border-radius:34px;padding:7px;background:var(--surf);border:1px solid var(--line);}
-  .phone.mid{width:246px;}
   .phone img{display:block;width:100%;border-radius:27px;border:1px solid rgba(0,0,0,.35);}
 
   /* section headers */
@@ -56,13 +54,28 @@
   .kicker{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);}
   h2{font-size:clamp(26px,4.5vw,40px);font-weight:800;letter-spacing:-.025em;margin:.28em 0 0;max-width:20ch;text-wrap:balance;}
 
-  /* features */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:28px;}
-  .card{background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:24px;}
-  .ico{width:44px;height:44px;border-radius:13px;background:var(--surf2);border:1px solid var(--line);
-    display:grid;place-items:center;margin-bottom:16px;}
-  .card h3{margin:0 0 6px;font-size:19px;font-weight:800;letter-spacing:-.015em;}
-  .card p{margin:0;color:var(--dim);font-size:15px;}
+  /* feature rows — asymmetric, alternating, screenshot-led */
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;
+    padding:clamp(44px,7vw,92px) 0;}
+  .feat + .feat{border-top:1px solid var(--line);}
+  .feat.rev .media{order:2;}
+  .media{display:flex;justify-content:center;}
+  .phone.big{width:300px;max-width:70vw;}
+  .feat .kicker{color:var(--lilas);}
+  .feat h2{font-size:clamp(24px,3.6vw,36px);font-weight:800;letter-spacing:-.028em;line-height:1.06;
+    margin:.4em 0 .46em;max-width:15ch;text-wrap:balance;}
+  .feat .lead2{color:var(--dim);font-size:clamp(15.5px,1.9vw,18px);max-width:42ch;margin:0;line-height:1.5;}
+  .pts{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:13px;}
+  .pts li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--txt);}
+  .pts svg{flex:none;margin-top:2px;}
+
+  /* "e ainda" compact list — no icon tiles */
+  .more{padding:8px 0 4px;}
+  .more-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px 30px;margin-top:24px;}
+  .more-item{display:flex;gap:12px;align-items:flex-start;}
+  .more-item svg{flex:none;margin-top:2px;}
+  .more-item h3{margin:0 0 3px;font-size:16px;font-weight:800;letter-spacing:-.01em;}
+  .more-item p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.45;}
 
   /* differentiator band */
   .band{background:var(--tinta);border:1px solid var(--line);border-radius:28px;padding:clamp(28px,5vw,48px);
@@ -78,6 +91,12 @@
   footer a{color:var(--lilas);text-decoration:none;}
   footer .dis{margin-top:10px;color:var(--faint);}
 
+  @media (max-width:760px){
+    .feat{grid-template-columns:1fr;gap:24px;padding:48px 0;text-align:center;}
+    .feat.rev .media{order:0;}
+    .feat h3,.feat .lead2{margin-left:auto;margin-right:auto;}
+    .pts{justify-items:start;max-width:34ch;margin-left:auto;margin-right:auto;text-align:left;}
+  }
   @media (prefers-reduced-motion:no-preference){
     .phone{transition:transform .3s ease;}
     .phone:hover{transform:translateY(-6px);}
@@ -105,39 +124,60 @@
     <img class="mascot" src="img/mascot.png" alt="Mascote TVDE" />
   </section>
 
-  <section class="shots">
-    <div class="phone"><img src="img/aprender.png" alt="Percurso de estudo por módulo" /></div>
-    <div class="phone mid"><img src="img/home.png" alt="Anel de prontidão para o exame" /></div>
-    <div class="phone"><img src="img/resultado.png" alt="Resultado com diagnóstico" /></div>
+  <section class="feat">
+    <div class="media"><div class="phone big"><img src="img/home.png" alt="Ecrã inicial com o anel de prontidão a 16%" /></div></div>
+    <div>
+      <span class="kicker">A tua prontidão</span>
+      <h2>Sabes sempre se já estás pronto.</h2>
+      <p class="lead2">Um anel, não um menu de botões. Vês num relance quanto falta para ires ao exame com margem, e qual o próximo passo certo para lá chegar.</p>
+      <ul class="pts">
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Prontidão real, não só perguntas feitas</span></li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Diz-te quantas perguntas ainda faltam</span></li>
+      </ul>
+    </div>
   </section>
 
-  <section class="sec">
-    <span class="kicker">Como funciona</span>
-    <h2>Estudar até estares mesmo pronto — sem enrolação.</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.4l3.4 2"/></svg></div>
-        <h3>Anel de prontidão</h3><p>Sabes num relance se já estás pronto para o exame — não é um menu de botões.</p>
+  <section class="feat rev">
+    <div class="media"><div class="phone big"><img src="img/aprender.png" alt="Percurso de estudo por módulo, dividido em Fácil, Médio e Difícil" /></div></div>
+    <div>
+      <span class="kicker">O conteúdo</span>
+      <h2>Perguntas reais do IMT, por módulo.</h2>
+      <p class="lead2">Os módulos do exame, cada um em Fácil, Médio e Difícil. Só perguntas verificadas contra as fontes oficiais: quando algo é dúvida, dizemos.</p>
+      <ul class="pts">
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Todos os módulos, do fácil ao difícil</span></li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Perguntas oficiais, não inventadas</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="feat">
+    <div class="media"><div class="phone big"><img src="img/resultado.png" alt="Resultado de um exame, 26 de 30 certas, com diagnóstico do que tirou pontos" /></div></div>
+    <div>
+      <span class="kicker">A preparação</span>
+      <h2>Faz o exame antes do exame.</h2>
+      <p class="lead2">Simulação com o critério real: 30 perguntas, 60 minutos, mínimo 27 certas. No fim vês o que te tirou pontos, e os teus erros voltam sozinhos, à altura certa, até fixares.</p>
+      <ul class="pts">
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>30 perguntas · 60 min · mínimo 27</span></li>
+        <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Repetição espaçada dos teus erros</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec more">
+    <span class="kicker">E ainda</span>
+    <h2>O que te mantém a estudar até ao fim.</h2>
+    <div class="more-grid">
+      <div class="more-item">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="#C8FF4D"><path d="M12 2C16 8 21 11 21 16.5 21 20.6 17 23 12 23S3 20.6 3 16.5C3 11 8 8 12 2Z"/></svg>
+        <div><h3>Hábito diário</h3><p>Sequência de dias, XP e conquistas para não parares antes do exame.</p></div>
       </div>
-      <div class="card">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CDB8FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 6.3"/><path d="M20 4.5V11h-6.5"/></svg></div>
-        <h3>Os teus erros voltam</h3><p>Repetição espaçada: o que costumas falhar reaparece à altura certa, até fixares.</p>
+      <div class="more-item">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#CDB8FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.4-3.1 7.6-8 9-4.9-1.4-8-4.6-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><h3>Honesto contigo</h3><p>Respostas verificadas contra as fontes. Quando há dúvida, admitimos.</p></div>
       </div>
-      <div class="card">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
-        <h3>Exame a sério</h3><p>Simulação com o critério real: 30 perguntas, 60 minutos, mínimo 27 certas.</p>
-      </div>
-      <div class="card">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="#C8FF4D"><path d="M12 2C16 8 21 11 21 16.5 21 20.6 17 23 12 23S3 20.6 3 16.5C3 11 8 8 12 2Z"/></svg></div>
-        <h3>Hábito diário</h3><p>Sequência de dias, XP e conquistas para não parares até ao exame.</p>
-      </div>
-      <div class="card">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CDB8FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2.2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div>
-        <h3>Estuda sem rede</h3><p>Funciona offline, sem conta por predefinição. Cria conta só se quiseres sincronizar o progresso entre telemóveis.</p>
-      </div>
-      <div class="card">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.9L21 9.7l-4.7 4.3 1.3 6.3L12 17.4l-5.6 3.2 1.3-6.3L3 9.7l6.3-.8z"/></svg></div>
-        <h3>Honesto contigo</h3><p>Só ensinamos respostas verificadas contra as fontes. Quando algo é dúvida, dizemos.</p>
+      <div class="more-item">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#C8FF4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        <div><h3>Teu, no teu telemóvel</h3><p>Funciona offline. Conta é opcional, só para sincronizar entre telemóveis.</p></div>
       </div>
     </div>
   </section>
